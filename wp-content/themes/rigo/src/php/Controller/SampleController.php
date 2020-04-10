@@ -26,5 +26,8 @@ class SampleController{
         return $lst;
     }
     
+    public function addCar() {
+        
+    }
 }
 ?>

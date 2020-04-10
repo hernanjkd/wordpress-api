@@ -9,4 +9,3 @@ $controller = new \WPAS\Controller\WPASController([ 'namespace' => 'Rigo\\Contro
  * Then you can start adding the routes one by one
 */
 $controller->route([ 'slug' => 'home', 'controller' => 'SampleController:getHomeData' ]);
-$controller->route([ 'slug' => 'cars', 'controller' => 'SampleController:getDraftCars' ]);
