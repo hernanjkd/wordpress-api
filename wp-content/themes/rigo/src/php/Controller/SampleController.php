@@ -8,7 +8,8 @@ class SampleController{
     
     public function getHomeData(){
         return [
-            'name' => 'Rigoberto'
+            'name' => 'Rigoberto',
+            'date' => 'Apr 9th'
         ];
     }
     
