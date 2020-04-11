@@ -29,7 +29,7 @@ class SampleController{
     }
     
     public function addCar( WP_REST_Request $request ) {
-        
+
         $json = json_decode( $request->get_body() );
         
         $post_id = wp_insert_post([
@@ -43,13 +43,14 @@ class SampleController{
         update_post_meta( $post_id, 'year', $json->year );
         update_post_meta( $post_id, 'color', $json->color );
         
-        $post = (array) get_post($post_id);
-        $post['make'] = get_field( 'make', $post_id );
-        $post['model'] = get_field( 'model', $post_id );
-        $post['year'] = get_field( 'year', $post_id );
-        $post['color'] = get_field( 'color', $post_id );
-        
-        return $post;
+        return 'Item added';
+
+        // $post = (array) get_post($post_id);
+        // $post['make'] = get_field( 'make', $post_id );
+        // $post['model'] = get_field( 'model', $post_id );
+        // $post['year'] = get_field( 'year', $post_id );
+        // $post['color'] = get_field( 'color', $post_id );
+        // return $post;
     }
 }
 ?>
