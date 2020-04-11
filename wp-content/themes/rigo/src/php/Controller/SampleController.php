@@ -29,18 +29,19 @@ class SampleController{
     }
     
     public function addCar( WP_REST_Request $request ) {
+        
         $json = json_decode( $request->get_body() );
-
+        
         $post_id = wp_insert_post([
             'post_author' => '1', 
             'post_type'=>'car',
-            'post_title' => $json['title'],
+            'post_title' => $json->post_title,
             'post_status' => 'publish',
         ]);
-        update_post_meta( $post_id, 'make', 'alfa' );
-        update_post_meta( $post_id, 'model', 'pointer' );
-        update_post_meta( $post_id, 'year', '1950' );
-        update_post_meta( $post_id, 'color', 'forest' );
+        update_post_meta( $post_id, 'make', $json->make );
+        update_post_meta( $post_id, 'model', $json->model );
+        update_post_meta( $post_id, 'year', $json->year );
+        update_post_meta( $post_id, 'color', $json->color );
         
         $post = (array) get_post($post_id);
         $post['make'] = get_field( 'make', $post_id );
@@ -49,7 +50,6 @@ class SampleController{
         $post['color'] = get_field( 'color', $post_id );
         
         return $post;
-        // return WP_REST_Request::get_body();
     }
 }
 ?>
