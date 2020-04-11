@@ -28,15 +28,17 @@ class SampleController{
     }
     
     public function addCar() {
-        // $post_id = wp_insert_post(array(
-        //     'ID' => '',
-        //     'post_author' => '1', 
-        //     'post_category' => array(),
-        //     'post_content' => 'content', 
-        //     'post_title' => 'title',
-        //     'post_status' => 'publish'
-        // ));
-        return get_post(18);
+        $post_id = wp_insert_post([
+            'post_author' => '1', 
+            'post_type'=>'car',
+            'post_title' => 'title',
+            'post_status' => 'publish',
+            'Make'=>'alfa',
+            'Model'=>'pointer',
+            'Year'=>'1950',
+            'Color'=>'forest'
+        ]);
+        return get_post($post_id);
         // return WP_REST_Request::get_body();
     }
 }
