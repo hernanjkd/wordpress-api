@@ -3,6 +3,7 @@ namespace Rigo\Controller;
 
 use Rigo\Types\Course;
 use Rigo\Types\Car;
+use WP_REST_Request;
 
 class SampleController{
     
@@ -27,12 +28,13 @@ class SampleController{
         return $lst;
     }
     
-    public function addCar() {
+    public function addCar( WP_REST_Request $request ) {
+        $json = json_decode( $request->get_body() );
 
         $post_id = wp_insert_post([
             'post_author' => '1', 
             'post_type'=>'car',
-            'post_title' => 'title',
+            'post_title' => $json['title'],
             'post_status' => 'publish',
         ]);
         update_post_meta( $post_id, 'make', 'alfa' );
