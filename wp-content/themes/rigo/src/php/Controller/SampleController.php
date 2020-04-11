@@ -28,7 +28,16 @@ class SampleController{
     }
     
     public function addCar() {
-        
+        // $post_id = wp_insert_post(array(
+        //     'ID' => '',
+        //     'post_author' => '1', 
+        //     'post_category' => array(),
+        //     'post_content' => 'content', 
+        //     'post_title' => 'title',
+        //     'post_status' => 'publish'
+        // ));
+        return get_post(18);
+        // return WP_REST_Request::get_body();
     }
 }
 ?>
