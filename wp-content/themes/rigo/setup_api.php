@@ -17,3 +17,4 @@ $api->get([ 'path' => '/courses', 'controller' => 'SampleController:getDraftCour
 $api->get([ 'path' => '/cars', 'controller' => 'SampleController:getDraftCars' ]); 
 $api->post([ 'path' => '/createcar', 'controller' => 'SampleController:addCar' ]); 
 $api->put([ 'path' => '/updatecar', 'controller' => 'SampleController:editCar' ]); 
+$api->delete([ 'path' => '/deletecar', 'controller' => 'SampleController:removeCar' ]); 

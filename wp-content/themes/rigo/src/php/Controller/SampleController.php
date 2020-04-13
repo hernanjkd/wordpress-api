@@ -57,7 +57,7 @@ class SampleController{
         
         $json = json_decode( $request->get_body() );
         $id = $json->id;
-        
+
         $post = get_post( $id );
         $post->title = $json->title;
         update_post_meta( $id, 'make', $json->make );
@@ -68,6 +68,15 @@ class SampleController{
         wp_update_post( $post );
         
         return 'Post updated';
+    }
+
+    public function removeCar( WP_REST_Request $request ) {
+
+        $json = json_decode( $request->get_body() );
+
+        wp_delete_post( $json->id );
+
+        return 'Post deleted';
     }
 }
 ?>
