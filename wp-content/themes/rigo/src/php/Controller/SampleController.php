@@ -32,18 +32,18 @@ class SampleController{
         
         $json = json_decode( $request->get_body() );
         
-        $post_id = wp_insert_post([
+        $id = wp_insert_post([
             'post_author' => '1', 
             'post_type'=>'car',
             'post_title' => $json->post_title,
             'post_status' => 'publish',
         ]);
-        update_post_meta( $post_id, 'make', $json->make );
-        update_post_meta( $post_id, 'model', $json->model );
-        update_post_meta( $post_id, 'year', $json->year );
-        update_post_meta( $post_id, 'color', $json->color );
+        update_post_meta( $id, 'make', $json->make );
+        update_post_meta( $id, 'model', $json->model );
+        update_post_meta( $id, 'year', $json->year );
+        update_post_meta( $id, 'color', $json->color );
         
-        return 'Item added';
+        return 'Post created';
 
         // $post = (array) get_post($post_id);
         // $post['make'] = get_field( 'make', $post_id );
@@ -56,9 +56,18 @@ class SampleController{
     public function editCar( WP_REST_Request $request ) {
         
         $json = json_decode( $request->get_body() );
+        $id = $json->id;
         
-        $post = get_post( $json->id );
-        return $post;
+        $post = get_post( $id );
+        $post->title = $json->title;
+        update_post_meta( $id, 'make', $json->make );
+        update_post_meta( $id, 'model', $json->model );
+        update_post_meta( $id, 'year', $json->year );
+        update_post_meta( $id, 'color', $json->color );
+
+        wp_update_post( $post );
+        
+        return 'Post updated';
     }
 }
 ?>
