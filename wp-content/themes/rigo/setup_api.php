@@ -15,4 +15,5 @@ $api = new \WPAS\Controller\WPASAPIController([
 */
 $api->get([ 'path' => '/courses', 'controller' => 'SampleController:getDraftCourses' ]); 
 $api->get([ 'path' => '/cars', 'controller' => 'SampleController:getDraftCars' ]); 
-$api->post([ 'path' => '/postcars', 'controller' => 'SampleController:addCar' ]); 
+$api->post([ 'path' => '/createcar', 'controller' => 'SampleController:addCar' ]); 
+$api->put([ 'path' => '/updatecar', 'controller' => 'SampleController:editCar' ]); 
