@@ -33,6 +33,7 @@
 
 # track this file .gitignore (i.e. do NOT ignore it)
 !composer.json
+!composer.lock
 
 # track .editorconfig file (i.e. do NOT ignore it)
 !.editorconfig
